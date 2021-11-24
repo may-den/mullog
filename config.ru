@@ -32,15 +32,9 @@ module Util
   def self.update_repo(git_dir)
     Thread.new do
       @@git_mutex.synchronize do
-	# Stash current changes so we can do our pull, rebase, push magic
-	`cd #{git_dir} && git stash`
-
-	# Pull, rebase, and push
-	`cd #{git_dir} && git pull --rebase`
-	`cd #{git_dir} && git push`
-
-	# Get those changes back out there
-	`cd #{git_dir} && git stash apply --index`
+      	# Pull and push
+      	puts `cd #{git_dir} && git push origin "#{GIT_BRANCH}"`
+        puts `cd #{git_dir} && git pull`
       end
     end
   end
@@ -100,7 +94,8 @@ class WebhookMiddleware < Sinatra::Base
   unlink '/*' do @next.call(request.env) end
 end
 
-GIT_URL = ENV.fetch('GIT_URL')
+GIT_URL      = ENV.fetch('GIT_URL')
+GIT_BRANCH   = ENV.fetch('GIT_BRANCH')
 GIT_USERNAME = ENV.fetch('GIT_USERNAME')
 GIT_PASSWORD = ENV.fetch('GIT_PASSWORD')
 

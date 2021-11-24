@@ -1,20 +1,18 @@
 version: '2'
 services:
   web:
-    build: .
-    command: bin/start
-    volumes:
-      - .:/usr/src/app
-    volumes_from:
-      - bundle
+    image: mayden/mullog
     ports:
       - "4567:4567"
     environment:
       PORT: 4567
       HOST: 0.0.0.0
-  bundle:
-    # You may need to run `docker-compose build web` before this works.
-    image: alpine
-    command: echo "I'm a little data volume, short and stout"
-    volumes:
-      - /bundle
+      GIT_URL: https://github.com/gollum/gollum
+      GIT_BRANCH: main
+      GIT_USERNAME: test
+      GIT_PASSWORD: test
+      GIT_AUTHOR_NAME: test
+      GIT_AUTHOR_EMAIL: test
+      HTTP_USERNAME: test
+      HTTP_PASSWORD: test
+      GH_WEBHOOK_SECRET: test
