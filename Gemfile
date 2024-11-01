@@ -6,10 +6,10 @@ gem 'byebug'
 
 # Rack server
 gem 'rack'
-gem 'puma'
+gem 'puma', '>= 5.6.9'
 
 # Gollum and markup renderers
-gem 'gollum'
+gem 'gollum', '>= 5.0.0'
 gem 'github-markdown'
 gem 'asciidoctor'
 gem 'creole'
