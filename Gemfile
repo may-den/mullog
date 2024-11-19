@@ -18,4 +18,4 @@ gem 'org-ruby'
 gem 'RedCloth'
 
 # For our GitHub webhook middleware
-gem 'sinatra'
+gem 'sinatra', '>= 4.1.0'
