@@ -9,7 +9,7 @@ gem 'rack'
 gem 'puma'
 
 # Gollum and markup renderers
-gem 'gollum'
+gem 'gollum', '>= 5.0.0'
 gem 'github-markdown'
 gem 'asciidoctor'
 gem 'creole'
